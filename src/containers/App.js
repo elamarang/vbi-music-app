@@ -5,7 +5,6 @@ import HomeButtons from '../components/homeButtons/HomeButtons'
 import {fetchSongs, fetchAlbums} from '../redux'
 import PlaylistList from '../components/playlist/PlaylistList';
 import PlaylistView from '../components/playlist/PlaylistView'
-import AddSongsToPlaylist from '../components/playlist/AddSongsToPlaylist'
 import SongView from '../components/songs/SongView'
 import {
   BrowserRouter as Router,
