@@ -12,12 +12,14 @@ export default function SongView() {
 
     const songs = useSelector(state=>state.song.songs)
     const searchField = useSelector(state=>state.searchField.searchField);
+
+    // using the loading state value to display the Spinner animation until the API call goes through
     const songLoading = useSelector(state=>state.song.loading)
     const albumLoading = useSelector(state=>state.album.loading)
     const error = useSelector(state=>state.song.error)
     const dispatch = useDispatch();
 
-  
+    //filtering the songs list based on text entered in input
     const filteredSongs = songs.filter(song => {
         return song.title.toLowerCase().includes(searchField.toLowerCase());
       })
