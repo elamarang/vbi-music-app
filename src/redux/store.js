@@ -27,10 +27,14 @@ const saveState = (state) => {
   };
 
 const persistedState = loadState();
-console.log(persistedState)
+let middlewares = [thunk]
+
+if (process.env.NODE_ENV === 'development') {
+    middlewares.push(logger)
+  }
 const store = createStore(rootReducer, 
     persistedState,
-    composeWithDevTools(applyMiddleware(logger,thunk)))
+    composeWithDevTools(applyMiddleware(...middlewares)))
 
 store.subscribe(() => {
     saveState({

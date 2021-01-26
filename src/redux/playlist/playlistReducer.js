@@ -12,7 +12,7 @@ export const playlistReducer = (state=initialState,action) => {
                 playlists : [...state.playlists,{
                     name: action.payload,
                     songs: [],
-                    createdAt: (new Date()).toLocaleTimeString()
+                    createdAt: `${(new Date()).toLocaleDateString()} ${(new Date()).toLocaleTimeString()}`
                 }]
             }
         case ADD_SONG_PLAYLIST :

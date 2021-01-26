@@ -15,7 +15,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    console.log('here')
+    document.title = 'VBI Music App';
     dispatch(fetchSongs())    
     dispatch(fetchAlbums())
   },[])

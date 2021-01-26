@@ -40,12 +40,10 @@ export default function AddSongsToPlaylist ({playlist, addSongs, shuffle})  {
       })
       
        useEffect(()=>{
-           console.log('shuffle'+shuffle)
            if(!addSongs&&shuffle>0){
-            console.log('working')
             shuffleSongs(currSongs)  
            }
-        },[shuffle]);
+        },[shuffle,!addSongs]);
          
      
     return (
