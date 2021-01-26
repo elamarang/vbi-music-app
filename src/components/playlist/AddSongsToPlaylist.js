@@ -43,7 +43,7 @@ export default function AddSongsToPlaylist ({playlist, addSongs, shuffle})  {
            if(!addSongs&&shuffle>0){
             shuffleSongs(currSongs)  
            }
-        },[shuffle,!addSongs]);
+        },[shuffle]);
          
      
     return (
