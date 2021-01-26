@@ -23,12 +23,14 @@ export default function SongView() {
     const filteredSongs = songs.filter(song => {
         return song.title.toLowerCase().includes(searchField.toLowerCase());
       })
+
     
     return (
         <div>
             <SearchBox onSearchChange={(e)=>dispatch(searchFieldChange(e.target.value))}/>
                 {(songLoading||albumLoading)?<Spinner animation="border" variant="secondary" />:
                 error.length>0?<div>Oops. Unexpected Error occured</div>:
+                filteredSongs.length===0?<div className="pa2 ma3">No results found</div>:
             <Scroll>
                 <SongList songs={filteredSongs} />
             </Scroll>}

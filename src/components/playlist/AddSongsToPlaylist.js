@@ -31,12 +31,16 @@ export default function AddSongsToPlaylist ({playlist, addSongs, shuffle})  {
         const currentIndex = state.playlist.playlists.findIndex(element => element.name === playlist )
         return state.playlist.playlists[currentIndex].songs}
         )
-    const notAddedSongs =  songs.filter(song=>
-        currSongs.findIndex(element => element.id === song.id ) === -1
-    )
-    const filteredSongs = notAddedSongs.filter(song => {
-        return song.title.toLowerCase().includes(searchField.toLowerCase());
-      })
+        let notAddedSongs = [];
+        let filteredSongs = [];
+        if(addSongs){
+            notAddedSongs =  songs.filter(song=>
+                currSongs.findIndex(element => element.id === song.id ) === -1
+            )
+             filteredSongs = notAddedSongs.filter(song => {
+                return song.title.toLowerCase().includes(searchField.toLowerCase());
+              })        
+        }
       
        useEffect(()=>{
            if(!addSongs&&shuffle>0){
