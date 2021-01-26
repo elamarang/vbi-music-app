@@ -21,14 +21,14 @@ export default function PlaylistView() {
         <div>
             <div className="flex justify-between">
             <span className="tl b pa2 ma2">{`${playlist} - Editable`}</span>
-            {addSongs&&<Button variant="primary" className="pa2 ma2 tr"
+            {addSongs&&<Button variant="success" className="pa2 ma2 tr"
             onClick={()=>history.push(`/editplaylist/${playlist}/view`)}>Done</Button>}
             </div>
             {!addSongs&&<div className="tr">
-            <Button variant="secondary" className="pa2 ma2" 
+            <Button variant="info" className="pa2 ma2" 
             onClick={() => setShuffle(prevShuffle=>prevShuffle+1)}
             >Shuffle Play</Button>
-            <Button variant="secondary" className="pa2 ma2" 
+            <Button variant="primary" className="pa2 ma2" 
                     onClick={()=>history.push(`/editplaylist/${playlist}/add`)}>Add Song</Button>
             </div>}
             <hr/>

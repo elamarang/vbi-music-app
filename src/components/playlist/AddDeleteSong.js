@@ -57,7 +57,7 @@ export default function AddDeleteSong({albumId,title,thumbnailUrl,id, addSongs,p
                     <Col xs={3} className='vh'>
                         {addSongs?
                     <Button variant="primary" className="pa2 ma2 tr" onClick={()=>onClickAdd()}>Add to List</Button>:
-                    <Button variant="primary" className="pa2 ma2 tr" onClick={()=>onClickDelete()}>Delete</Button>
+                    <Button variant="danger" className="pa2 ma2 tr" onClick={()=>onClickDelete()}>Delete</Button>
                         }
                     </Col>                   
                 </Row>

@@ -1,4 +1,9 @@
-import {CREATE_PLAYLIST, ADD_SONG_PLAYLIST, DELETE_SONG_PLAYLIST} from './playlistTypes'
+import {
+    CREATE_PLAYLIST, 
+    ADD_SONG_PLAYLIST, 
+    DELETE_SONG_PLAYLIST,
+    SHUFFLE_SONGS_PLAYLIST
+} from './playlistTypes'
 
 export const createPlaylist = (name) => {
     return {
@@ -18,5 +23,12 @@ export const deleteSongFromPlaylist = (song) => {
     return {
         type: DELETE_SONG_PLAYLIST,
         payload: song
+    }
+}
+
+export const shuffleSongsPlaylist = (songs) => {
+    return {
+        type: SHUFFLE_SONGS_PLAYLIST,
+        payload: songs
     }
 }

@@ -37,7 +37,7 @@ export default function CreatePlaylistModal({show,handleClose,playLists}) {
         <Modal.Dialog >
             <Modal.Body className='my-modal-body'>
                 <input 
-                className="pa2 ma3"
+                className="pa2 ma3 tc"
                 placeholder="Enter Playlist Name"
                 value={input}
                 onChange={(e)=>setInput(e.target.value)}></input>

@@ -14,6 +14,7 @@ import {
 function App() {
   const dispatch = useDispatch();
 
+  //We are fetching Albums and songs from API using On first Mount of App component
   useEffect(()=>{
     document.title = 'VBI Music App';
     dispatch(fetchSongs())    
@@ -35,7 +36,6 @@ function App() {
           <Route path="/editplaylist/:playlist/:type">
               <PlaylistView/>
           </Route>
-
      </Switch>
      </Router>
     </div>

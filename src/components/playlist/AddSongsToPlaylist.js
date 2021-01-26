@@ -3,24 +3,23 @@ import SearchBox from '../searchBox/SearchBox'
 import Scroll from '../Scroll'
 import AddSongsList from './AddSongsList';
 import {useSelector, useDispatch} from 'react-redux'
-import {  searchFieldChange} from '../../redux'
+import {useHistory} from 'react-router-dom'
+import {  searchFieldChange, shuffleSongsPlaylist} from '../../redux'
 
 export default function AddSongsToPlaylist ({playlist, addSongs, shuffle})  {
     const songs = useSelector(state=>state.song.songs)
     const searchField = useSelector(state=>state.searchField.searchField);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const shuffleSongs=(items) => {
         var currentIndex = items.length, temporaryValue, randomIndex;
       
-        // While there remain elements to shuffle...
         while (0 !== currentIndex) {
       
-          // Pick a remaining element...
           randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex -= 1;
       
-          // And swap it with the current element.
           temporaryValue = items[currentIndex];
           items[currentIndex] = items[randomIndex];
           items[randomIndex] = temporaryValue;
@@ -32,7 +31,7 @@ export default function AddSongsToPlaylist ({playlist, addSongs, shuffle})  {
         const currentIndex = state.playlist.playlists.findIndex(element => element.name === playlist )
         return state.playlist.playlists[currentIndex].songs}
         )
-    const notAddedSongs = songs.filter(song=>
+    const notAddedSongs =  songs.filter(song=>
         currSongs.findIndex(element => element.id === song.id ) === -1
     )
     const filteredSongs = notAddedSongs.filter(song => {
@@ -41,10 +40,14 @@ export default function AddSongsToPlaylist ({playlist, addSongs, shuffle})  {
       
        useEffect(()=>{
            if(!addSongs&&shuffle>0){
-            shuffleSongs(currSongs)  
+            const songsObj ={
+                playlist,
+                songs:shuffleSongs(currSongs)
+            }
+            dispatch(shuffleSongsPlaylist(songsObj))
+            history.push(`/editplaylist/${playlist}/view`)
            }
         },[shuffle]);
-         
      
     return (
         <div>

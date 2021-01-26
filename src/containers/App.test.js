@@ -1,8 +1,21 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import HomeButtons from '../components/homeButtons/HomeButtons';
+import {Provider} from 'react-redux'
+import {store} from '../redux/store';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+import {  shallow,mount } from 'enzyme';
+
+describe('Home Page testing',()=>{
+
+  let wrapper;
+  beforeEach(()=>{
+     wrapper = shallow(<HomeButtons/>);
+  })
+  test('renders button with text `All songs`', () => {
+    expect(wrapper.find("#button-allsongs").text()).toContain('All Songs')
+  });
+  test('renders button with text `Playlists`', () => {
+    expect(wrapper.find("#button-playlists").text()).toContain('Playlists')
+  });
+
+})
